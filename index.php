@@ -1,4 +1,37 @@
 <?php
+
+class Category
+{
+    private $icon;
+    private $name;
+
+    public function __construct($icon, $name)
+    {
+        $this->setIcon($icon);
+        $this->setName($name);
+    }
+
+    public function getIcon()
+    {
+        return $this->icon;
+    }
+
+    public function setIcon($icon)
+    {
+        $this->icon = $icon;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+};
+
 class Product
 {
     private $name;
@@ -42,6 +75,14 @@ class Product
         $this->price = $price;
     }
 }
+
+class Food extends Product
+{
+    private $expireDate;
+}
+
+$c1 = new Category("CaneIcon", "Cane");
+var_dump($c1);
 
 $p1 = new Product("Prod1", 10, 100);
 var_dump($p1);

@@ -37,12 +37,14 @@ class Product
     private $name;
     private $weight;
     private $price;
+    private Category $category;
 
-    public function __construct($name, $weight, $price)
+    public function __construct($name, $weight, $price, Category $category)
     {
         $this->setName($name);
         $this->setWeight($weight);
         $this->setPrice($price);
+        $this->setCategory($category);
     }
 
     public function getName()
@@ -74,15 +76,51 @@ class Product
     {
         $this->price = $price;
     }
+
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    }
 }
 
 class Food extends Product
 {
     private $expireDate;
-}
 
-$c1 = new Category("CaneIcon", "Cane");
-var_dump($c1);
+    public function __construct($name, $weight, $price, Category $category, $expireDate)
+    {
+        parent::__construct($name, $weight, $price, $category);
+        $this->setExpireDate($expireDate);
+    }
 
-$p1 = new Product("Prod1", 10, 100);
+    public function getExpireDate()
+    {
+        return $this->expireDate;
+    }
+
+    public function setExpireDate($expireDate)
+    {
+        $this->expireDate = $expireDate;
+    }
+};
+
+$dogCategory = new Category("CaneIcon", "Cane");
+var_dump($dogCategory);
+
+$catCategory = new Category("gattoIcon", "gatto");
+var_dump($catCategory);
+
+echo "<br>-----<br>";
+
+$p1 = new Product("Prod1", 10, 100, $dogCategory);
 var_dump($p1);
+
+echo "<br>----<br>";
+
+$f1 = new Food("Nome Cibo", 5, 40, $dogCategory, "10?10?2022");
+var_dump($f1);

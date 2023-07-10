@@ -109,6 +109,28 @@ class Food extends Product
     }
 };
 
+class Toy extends Product
+{
+    private $color;
+
+    public function __construct($name, $weight, $price, Category $category, $color)
+
+    {
+        parent::__construct($name, $weight, $price, $category);
+        $this->setColor($color);
+    }
+
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    public function setColor($color)
+    {
+        $this->color = $color;
+    }
+}
+
 $dogCategory = new Category("CaneIcon", "Cane");
 var_dump($dogCategory);
 
@@ -124,3 +146,8 @@ echo "<br>----<br>";
 
 $f1 = new Food("Nome Cibo", 5, 40, $dogCategory, "10?10?2022");
 var_dump($f1);
+
+echo "<br>----<br>";
+
+$t1 = new Toy("Nome Gioco", 5, 99, $dogCategory, "Blue");
+var_dump($t1);

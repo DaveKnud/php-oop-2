@@ -1,27 +1,42 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
 
-require_once("./models/Category.php");
-require_once("./models/Product.php");
-require_once("./models/Food.php");
-require_once("./models/Toy.php");
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <?php require_once("./data/db.php") ?>
+</head>
 
-$dogCategory = new Category("CaneIcon", "Cane");
-var_dump($dogCategory);
+<body>
+    <!-- STAMPA CIBO -->
+    <?php
+    foreach ($foods as $food) {
+    ?>
+        <div>
+            <h1>
+                <?php echo $food->getName(); ?>
+            </h1>
+            <div>Peso :<?php echo $food->getWeight(); ?> KG</div>
+            <div>Prezzo: <?php echo $food->getPrice(); ?> $ </div>
+            <div>Data scadenza: <?php echo $food->getExpireDate(); ?> </div>
+        </div>
+    <?php
 
-$catCategory = new Category("gattoIcon", "gatto");
-var_dump($catCategory);
+    }
+    ?>
+    <!-- STAMPA GIOCATTOLO -->
+    <?php
+    foreach ($toys as $toy) {
+    ?>
+        <h1>
+            <?php echo $toy->getName(); ?>
+        </h1>
+        <div>Peso :<?php echo $toy->getWeight(); ?> KG </div>
+        <div>Prezzo: <?php echo $toy->getPrice(); ?> $ </div>
+    <?php
+    }
+    ?>
+</body>
 
-echo "<br>-----<br>";
-
-$p1 = new Product("Prod1", 10, 100, $dogCategory);
-var_dump($p1);
-
-echo "<br>----<br>";
-
-$f1 = new Food("Nome Cibo", 5, 40, $dogCategory, "10?10?2022");
-var_dump($f1);
-
-echo "<br>----<br>";
-
-$t1 = new Toy("Nome Gioco", 5, 99, $dogCategory, "Blue");
-var_dump($t1);
+</html>
